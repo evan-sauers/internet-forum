@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Internet Forum</title>
+    </head>
+
+    <body>
+
+        <h1>Internet Forum</h1>
+
+
+        <!--
+
+        The below code has been imported from previous project.
+        We will change this to make AJAX request later.
+
+
+        <input id="random" type="submit" name="request" value="Request Color" onclick="changeColor()"/>
+        <h2 id="colorWord"></h2>
+
+
+        <script>
+            // Declare Variables
+            let colorGenerator = document.getElementById("random");
+            let color = document.getElementById("colorWord");
+
+            // When button clicked, call function
+            function changeColor() {
+                let xhr = new XMLHttpRequest();
+
+                xhr.onreadystatechange=function(response) {
+                    if (this.readyState === 4 && this.status === 200) {
+                        // Display Color Name
+                        color.innerHTML = xhr.responseText; 
+
+                        // Change Background Color
+                        document.body.style.backgroundColor = xhr.responseText;
+                    }   
+                }
+
+                // Open and Send POST Request
+                xhr.open("POST", "color-service.php", true);
+                xhr.send();
+            }
+        </script>
+
+
+        -->
+
+        <footer>
+            <p>Created by Cynthia Carter and Evan Sauers</p>
+        </footer>
+    </body>
+</html>
