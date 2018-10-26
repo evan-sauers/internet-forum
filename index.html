@@ -3,12 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title>Internet Forum</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
     </head>
 
     <body>
-
-        <h1>Internet Forum</h1>
-
+        <!-- Login forms -->
+        <form action="" method="post" id="login">
+            <h1>Internet Forum</h1>
+            <input class="form" type="text" name="username" placeholder="username" required><br>
+            <input class="form" type="password" name="password" placeholder="password" required><br>
+            <input id="button" type="submit" value="Login" onclick="submit()">
+        </form>
 
         <!--
 
@@ -16,17 +22,9 @@
         We will change this to make AJAX request later.
 
 
-        <input id="random" type="submit" name="request" value="Request Color" onclick="changeColor()"/>
-        <h2 id="colorWord"></h2>
-
-
         <script>
-            // Declare Variables
-            let colorGenerator = document.getElementById("random");
-            let color = document.getElementById("colorWord");
-
             // When button clicked, call function
-            function changeColor() {
+            function submit() {
                 let xhr = new XMLHttpRequest();
 
                 xhr.onreadystatechange=function(response) {
@@ -49,7 +47,7 @@
         -->
 
         <footer>
-            <p>Created by Cynthia Carter and Evan Sauers</p>
+            <p>Created by Cynthia Carter and Evan Sauers.</p>
         </footer>
     </body>
 </html>
