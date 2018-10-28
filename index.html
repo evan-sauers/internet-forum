@@ -2,15 +2,24 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Internet Forum</title>
+        <title>Pets Forum</title>
         <link rel="stylesheet" href="styles.css">
         <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
     </head>
 
     <body>
-        <!-- Login forms -->
+        <!-- PHP LOGIN -->
+        <?php
+            include("login.php");
+
+            if(isset($_SESSION["login-user"])){
+            header("location: user.php");
+        }
+        ?>
+        
+        <!-- LOGIN FORMS -->
         <form action="" method="post" id="login">
-            <h1>Internet Forum</h1>
+            <h1>Pets Forum</h1>
             <input class="form" type="text" name="username" placeholder="username" required><br>
             <input class="form" type="password" name="password" placeholder="password" required><br>
             <input id="button" type="submit" value="Login" onclick="submit()">
