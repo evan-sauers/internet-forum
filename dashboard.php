@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <title>Pets Forum</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
         <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
