@@ -6,6 +6,8 @@
 h1 {
     font-family: 'ABeeZee', sans-serif;
     font-size: 48px;
+    text-align: center;
+    padding: 20px;
 }
 
 #login {
@@ -32,4 +34,13 @@ footer {
     font-size: 12px;
     text-align: center;
     text-transform: uppercase;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 12px;
+}
+
+.card {
+    
 }
