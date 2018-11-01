@@ -1,39 +1,18 @@
-.login {
-    background-image: url("images/login-background.jpg");
-    background-size: cover;
+#rightNav {
+    padding: 20px;
+    float: right;
+    margin-top: 10px;
 }
 
 h1 {
+    float: left;
     font-family: 'ABeeZee', sans-serif;
     font-size: 48px;
-    text-align: center;
     padding: 20px;
 }
 
-#login {
-    background-color: rgba(255, 255, 255, .75);
-    padding: 80px 0px 100px 0px;
-    margin: 150px 700px 20px 200px;
-    text-align: center;
-}
-
-.form {
-    padding: 10px 0px 10px 0px;
-    width: 225px;
-}
-
-#button {
-    margin: 10px 20px 0px 180px;
-    width: 70px;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    font-size: 12px;
-    text-align: center;
-    text-transform: uppercase;
+h4 {
+    display: inline;
 }
 
 .footer {
