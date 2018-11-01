@@ -1,3 +1,7 @@
+<?php
+    include('session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,16 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
     </head>
 
-    <body>
+    <body>        
         <div class="container-fluid">
             <!-- Title -->
             <div class="row">
-              <div class="col">
-                  <h1>Pet Forum Dashborad</h1>
+              <div class="col-lg-6">
+                  <h1>Pet Forum Dashboard</h1>
               </div>
+                <div class="col-lg-6">
+                    <div id="rightNav">
+                        <h4>Hello, <?php echo $session; ?></h4>&nbsp;&nbsp;
+                        <h4><a href="logout.php">Logout</a></h4>
+                    </div>
+                </div>
             </div>
             
             <!-- Card Row ONE -->
@@ -28,8 +37,8 @@
                   <div class="card bg-light mb-3" style="width: 27rem;">
                       <img class="card-img-top" src="images/cat.jpg" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">Cat</h5>
-                            <p class="card-text">Write something about Cats.</p>
+                            <h5 class="card-title">Cats</h5>
+                            <p class="card-text">Write something about cats...</p>
                             <a href="#" class="btn btn-primary">Access Cat Subforum</a>
                           </div>
                     </div>
@@ -40,8 +49,8 @@
                     <div class="card text-white bg-warning mb-3" style="width: 27rem;">
                       <img class="card-img-top" src="images/dog.jpg" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">Dog</h5>
-                            <p class="card-text">Write something about Dogs.</p>
+                            <h5 class="card-title">Dogs</h5>
+                            <p class="card-text">Write something about dogs...</p>
                             <a href="#" class="btn btn-primary">Access dog Subforum</a>
                           </div>
                     </div>
@@ -52,8 +61,8 @@
                     <div class="card text-white bg-danger mb-3s" style="width: 27rem;">
                       <img class="card-img-top" src="images/bird.jpg" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">Bird</h5>
-                            <p class="card-text">Write something about Bird.</p>
+                            <h5 class="card-title">Birds</h5>
+                            <p class="card-text">Write something about birds...</p>
                             <a href="#" class="btn btn-primary">Access Bird Subforum</a>
                           </div>
                     </div>
@@ -72,7 +81,7 @@
                       <img class="card-img-top" src="images/fish.jpg" alt="Card image cap">
                           <div class="card-body">
                             <h5 class="card-title">Fish</h5>
-                            <p class="card-text">Write something about Fish.</p>
+                            <p class="card-text">Write something about fish...</p>
                             <a href="#" class="btn btn-primary">Access Fish Subforum</a>
                           </div>
                     </div>
@@ -83,8 +92,8 @@
                     <div class="card text-white bg-info mb-3" style="width: 27rem;">
                       <img class="card-img-top" src="images/hamster.jpg" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">Hamster</h5>
-                            <p class="card-text">Write something about Hamster.</p>
+                            <h5 class="card-title">Hamsters</h5>
+                            <p class="card-text">Write something about hamsters...</p>
                             <a href="#" class="btn btn-primary">Access Hamster Subforum</a>
                           </div>
                     </div>
@@ -92,11 +101,11 @@
             
                  <!-- Reptile -->
                 <div class="col-lg-4">
-                    <div class="text-white bg-success mb-3" style="width: 27rem;">
+                    <div class="card text-white bg-success mb-3" style="width: 27rem;">
                       <img class="card-img-top" src="images/lizard.jpg" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">Reptiles </h5>
-                            <p class="card-text">Write something about Reptiles.</p>
+                            <h5 class="card-title">Reptiles</h5>
+                            <p class="card-text">Write something about reptiles...</p>
                             <a href="#" class="btn btn-primary">Access Reptiles Subforum</a>
                           </div>
                     </div>
