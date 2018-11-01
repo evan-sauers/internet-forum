@@ -2,19 +2,12 @@
     background-image: url("images/login-background.jpg");
     background-size: cover;
 }
-.home {
-    background-image: url("images/login-background.jpg");
-    background-size: cover;
-}
+
 h1 {
     font-family: 'ABeeZee', sans-serif;
     font-size: 48px;
     text-align: center;
     padding: 20px;
-
-}
-.homeTitle{
-    color: white;
 }
 
 #login {
