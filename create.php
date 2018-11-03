@@ -2,25 +2,31 @@
     // Create connection and begin session
     include("config.php");
     session_start();
+
+    $_SESSION['error'] = '';
     
+    // If form is submitted
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $myusername = mysqli_real_escape_string($conn, $_POST['username']);
-        $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
         
-        // Query username and password from user table
-        $sql = $conn->query("SELECT userID FROM user WHERE username = '$myusername' and password = '$mypassword'");
-        
-        $row = mysqli_fetch_array($sql,MYSQLI_ASSOC);
-        $active = $row['active'];
-        $count = mysqli_num_rows($sql);
-        
-        if($count == 1) {
-            $_SESSION['username'];
-            $_SESSION['login'] = $myusername;
+        // Two passwords are equal to each other
+        if($_POST['password'] == $_POST['confirmPass']) {
+            $myusername = mysqli_real_escape_string($conn, $_POST['username']);
+            $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
             
-            header("location: dashboard.php");
-        }else{
-            //IMPLEMENT ERROR LATER
+            $_SESSSION['username'];
+            $_SESSION['login'] = $myusername;
+
+            // Query username and password from user table
+            $sql = $conn->query("INSERT INTO user (username, password) VALUES('$myusername', '$mypassword')");
+            
+            if ($conn->query($sql) === false) {
+                $_SESSION['error'] = "Registration successful";
+                header("location: dashboard.php");
+            } else {
+                $_SESSION['error'] = "Registration failed";
+            }
+        } else {
+            $_SESSION['error'] = "The passwords did not match";
         }
     }
 ?>
@@ -41,19 +47,16 @@
             <div class="row">
                 <div class="col-lg-12">
                 <!-- LOGIN FORMS -->
-                <form action="" method="post" id="login">
+                <form action="create.php" method="post" id="login">
                     <h1>Pets Forum</h1>
+                    <p>Create a username and password:</p>
+                    <div class="error"><i><?= $_SESSION['error']; ?></i></div>
                     <input class="form" type="text" name="username" placeholder="username" required><br>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
-                    <input id="loginButton" class="btn btn-primary" type="submit" value="Login">
-                    <input id="createButton" class="btn btn-basic" value="Create Account" onclick="create()">
+                    <input class="form" type="password" name="confirmPass" placeholder="confirm password" required><br>
+                    <input id="createButton" class="btn btn-primary" value="Submit" type="submit">
                 </form>
                 </div>
-                <script>
-                    function create(){
-                        window.location = 'create.php';
-                    }
-                </script>
                 <footer>
                     <p>Created by Cynthia Carter and Evan Sauers.</p>
                 </footer>
