@@ -20,7 +20,7 @@
             
             header("location: dashboard.php");
         }else{
-            //IMPLEMENT ERROR LATER
+            echo "<span style=\"color:red;\">Username/Password Invalid</span>";
         }
     }
 ?>

@@ -13,7 +13,7 @@
             $myusername = mysqli_real_escape_string($conn, $_POST['username']);
             $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
             
-            $_SESSSION['username'];
+            $_SESSION['username'];
             $_SESSION['login'] = $myusername;
 
             // Query username and password from user table
@@ -23,10 +23,10 @@
                 $_SESSION['error'] = "Registration successful";
                 header("location: dashboard.php");
             } else {
-                $_SESSION['error'] = "Registration failed";
+                $_SESSION['error'] = "<span style=\"color:red;\">Registration failed</span>";
             }
         } else {
-            $_SESSION['error'] = "The passwords did not match";
+            $_SESSION['error'] = "<span style=\"color:red;\">The passwords did not match</span>";
         }
     }
 ?>
@@ -51,7 +51,7 @@
                     <h1>Pets Forum</h1>
                     <p>Create a username and password:</p>
                     <div class="error"><i><?= $_SESSION['error']; ?></i></div>
-                    <input class="form" type="text" name="username" placeholder="username" required><br>
+                    <input id="username" class="form" type="text" name="username" placeholder="username" required><p id="check"></p>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
                     <input class="form" type="password" name="confirmPass" placeholder="confirm password" required><br>
                     <input id="createButton" class="btn btn-primary" value="Submit" type="submit">
@@ -60,7 +60,25 @@
                 <footer>
                     <p>Created by Cynthia Carter and Evan Sauers.</p>
                 </footer>
-                
+                    <script>
+                    // Use AJAX to check availability of username
+                    let us = document.getElementById("username");
+                    let check = document.getElementById("check");
+
+                    us.addEventListener("input", function(event){
+
+                        let xhr = new XMLHttpRequest();
+
+                        xhr.onreadystatechange=function() {
+                            if (this.readyState === 4 && this.status === 200) {
+                                // Display response
+                                check.innerHTML = xhr.responseText;
+                            }   
+                        }
+                        xhr.open("GET", "username.php?us=" + us.value, true);
+                        xhr.send();
+                    });
+                </script>
             </div>
         </div>
     </body>

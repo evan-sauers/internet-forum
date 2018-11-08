@@ -16,8 +16,13 @@ h1 {
     text-align: center;
 }
 
-.error {
-    color: red;
+#username {
+    display: inline;
+}
+
+#check {
+    display: inline;
+    float: right;
 }
 
 .form {
