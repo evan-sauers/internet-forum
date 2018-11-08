@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Make a post</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+
+    <body>
+         
+        <!-- Title -->
+        <div class="container-fluid">
+            <!-- Title of Post--> 
+            <div class="row">
+                <div class="col-12">
+                    <!-- Ajax request with the name of the current thead name -->
+                    <h1 class="post-title">How do I get my cat to stop puking on the sofa?</h1>
+                </div>
+            </div>
+            
+            <!-- Body text begins -->
+            <div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                                <div class="card-body">
+                                    <div class="col-12">
+                                        <p>My cat mittins won't stop puking on the couch. How do I get her to stop? Helpp mee! My cat mittins who I love dearly is puking everywhere. What should I do?</p>
+                                        <a href="#" class="card-link">Comment</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
+             <!-- Post Functionality begins -->
+            <div class="row">
+                <div class="col-12">
+                    <form>
+                        <div class="form-group">
+                            <!-- Make an Ajax request in order to get OP username -->
+                            <label for="comment">Add a comment to ___ post</label>
+                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                            
+                            <!-- Add a picture -->
+                              <div class="form-group">
+                                <label for="upload-img">Upload an Image</label>
+                                  <p>Acceptible formats: .png and .jpg</p>
+                                <input type="file" class="form-control-file" id="upload-img">
+                                <button type="submit" class="btn btn-primary">Post</button>
+                              </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- View Comments -->
+            <div class="row">
+                <div class="col-12">
+                    <h2>Comments</h2>
+                    <p class="poster-username">ilovekitties46</p>
+                    <p class="comment">"You should by a new sofa"</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
