@@ -1,5 +1,10 @@
 <?php
     include('session.php');
+    include("config.php");
+    $query1 = $conn->query("SELECT * FROM topic ORDER BY topicID ASC"); 
+    
+    $output1 = mysqli_fetch_assoc($query1)
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +44,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Cats</h5>
                             <p class="card-text">Write something about cats...</p>
-                            <a href="#" class="btn btn-primary">Access Cat Subforum</a>
+                            <a href="postList.php?id=1" class="btn btn-primary">Access Cat Subforum</a>
                           </div>
                     </div>
                 </div>
@@ -51,7 +56,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Dogs</h5>
                             <p class="card-text">Write something about dogs...</p>
-                            <a href="#" class="btn btn-primary">Access dog Subforum</a>
+                            <a href="postList.php?id=2" class="btn btn-primary">Access dog Subforum</a>
                           </div>
                     </div>
                 </div>
@@ -63,7 +68,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Birds</h5>
                             <p class="card-text">Write something about birds...</p>
-                            <a href="#" class="btn btn-primary">Access Bird Subforum</a>
+                            <a href="postList.php?id=3" class="btn btn-primary">Access Bird Subforum</a>
                           </div>
                     </div>
                 </div>
@@ -82,7 +87,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Fish</h5>
                             <p class="card-text">Write something about fish...</p>
-                            <a href="#" class="btn btn-primary">Access Fish Subforum</a>
+                            <a href="postList.php?id=4" class="btn btn-primary">Access Fish Subforum</a>
                           </div>
                     </div>
                 </div>
@@ -94,7 +99,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Hamsters</h5>
                             <p class="card-text">Write something about hamsters...</p>
-                            <a href="#" class="btn btn-primary">Access Hamster Subforum</a>
+                            <a href="postList.php?id=5" class="btn btn-primary">Access Hamster Subforum</a>
                           </div>
                     </div>
                 </div>
@@ -106,7 +111,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Reptiles</h5>
                             <p class="card-text">Write something about reptiles...</p>
-                            <a href="#" class="btn btn-primary">Access Reptiles Subforum</a>
+                            <a href="postList.php?id=6" class="btn btn-primary">Access Reptiles Subforum</a>
                           </div>
                     </div>
                 </div>
