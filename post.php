@@ -17,10 +17,6 @@
     $query2 = $conn->query("SELECT * FROM reply LEFT OUTER JOIN user on reply.userID = user.userID WHERE replyID = '$id' ORDER BY replyID DESC");
 
     $query3 = mysqli_num_rows($query2);
-    
-    if ($query3 == 0) {
-	   echo '<td colspan="5">No Replies</td>';
-    }
 
 ?>
 <!DOCTYPE html>
@@ -65,32 +61,10 @@
                             <div class="card-body">
                                 <div class="col-12">
                                     <p><?php echo $output1['content']; ?></p>
-                                    <a href="#" class="card-link">Comment</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-             <!-- Post Functionality begins -->
-            <div class="row">
-                <div class="col-12">
-                    <form>
-                        <div class="form-group">
-                            <!-- Make an Ajax request in order to get OP username -->
-                            <label for="comment">Add a comment to <?php $username; ?>'s post</label>
-                            <textarea class="form-control" id="comment" rows="3"></textarea>
-                            
-                            <!-- Add a picture -->
-                              <div class="form-group">
-                                <label for="upload-img">Upload an Image</label>
-                                  <p>Acceptible formats: .png and .jpg</p>
-                                <input type="file" class="form-control-file" id="upload-img">
-                                <button type="submit" class="btn btn-primary">Post Reply</button>
-                              </div>
-                        </div>
-                    </form>
                 </div>
             </div>
             
@@ -99,6 +73,11 @@
                 <div class="col-12">
                     <h2>Comments</h2>
                     <?php
+                        // If no replies in database, output
+                        if ($query3 == 0) {
+                           echo '<td colspan="5">No Replies</td>';
+                        }
+                    
                         while ($output2 = mysqli_fetch_assoc($query2))
                         {
 

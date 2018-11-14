@@ -15,6 +15,23 @@ h4 {
     display: inline;
 }
 
+#content {
+    width: 1000px;
+    height: 300px;
+}
+
+.topNav {
+    background-color: #f0f0f0;
+}
+
+#createPost {
+    margin-top: 100px;
+}
+
+.none {
+    margin-left: 100px;
+}
+
 .footer {
     text-align: center;
     padding-top: 12px;

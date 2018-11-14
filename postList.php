@@ -1,5 +1,5 @@
 <?php
-    include("config.php");
+    include('config.php');
     include('session.php');
     
     ob_start();
@@ -15,10 +15,11 @@
 
     $name = $output1['name'];
 
-    $query2 = $conn->query("SELECT * FROM post LEFT OUTER JOIN user on post.userID = user.userID WHERE topicID = '$id' ORDER BY topicID DESC");
+    $query2 = $conn->query("SELECT * FROM post LEFT OUTER JOIN user on post.username = user.username WHERE topicID = '$id' ORDER BY topicID DESC");
     $query3 = mysqli_num_rows($query2);
-    if ($query3 == 0)
-        echo '<td colspan="5">No Topics</td>';
+
+    $_SESSION['topicNum'] = $id;
+    
 ?>
 
 <!DOCTYPE html>
@@ -36,25 +37,32 @@
     <body>
         <div class="container-fluid">
             <!-- Title -->
-            <div class="row">
-              <div class="col-lg-6">
-                  <h1>Pet Forum Dashboard</h1>
-              </div>
-                <div class="col-lg-6">
-                    <div id="rightNav">
-                        <h4>Hello, <?php echo $session; ?></h4>&nbsp;&nbsp;
-                        <h4><a href="logout.php">Logout</a></h4>
+            <div class="topNav">
+                <div class="row">
+                  <div class="col-lg-6">
+                      <h1>Pet Forum Dashboard</h1>
+                  </div>
+                    <div class="col-lg-6">
+                        <div id="rightNav">
+                            <h4>Hello, <?php echo $session; ?></h4>&nbsp;&nbsp;
+                            <h4><a href="logout.php">Logout</a></h4>
+                        </div>
                     </div>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-12">
                     <h1 class="post-title"><?php echo $name ?> Forum</h1>
+                    <a href="newPost.php">Add New Post</a>
+                </div>
+                <div class="none">
+                    <?php if ($query3 == 0) {
+                        echo '<h5>No Topics</h5>';
+                    } ?>
                 </div>
             </div>
         </div>
-        <?php
+        <?php       
             while ($output2 = mysqli_fetch_assoc($query2))
             {
 
