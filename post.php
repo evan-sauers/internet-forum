@@ -1,22 +1,26 @@
 <?php
-    include("config.php");
+    include('config.php');
     include('session.php');
 
-    ob_start();
     $id = (int) $_GET['id'];
-    if ($id < 1)
-    {
-        header('Location: forum.php');
-        exit();
-    }
-    ob_end_clean();
 
-    include("config.php");
     $output1 = mysqli_fetch_assoc($conn->query("SELECT * FROM post WHERE postid = $id"));
 
-    $query2 = $conn->query("SELECT * FROM reply LEFT OUTER JOIN user on reply.userID = user.userID WHERE replyID = '$id' ORDER BY replyID DESC");
+    $query2 = $conn->query("SELECT * FROM reply LEFT OUTER JOIN user on reply.username = user.username WHERE postID = $id ORDER BY replyID DESC");
 
     $query3 = mysqli_num_rows($query2);
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $mycontent = mysqli_real_escape_string($conn, $_POST['content']);
+        
+        $getUser ="SELECT userID FROM user WHERE username='$session'";
+        $result = $conn->query($getUser);
+        $userString = $result->fetch_assoc();
+        
+        $sql = $conn->query("INSERT INTO reply (content, username, postID, replyDate) VALUES ('$mycontent', '$session', '$id', now())");
+              
+        header("location: post.php?id=$id");
+    }
 
 ?>
 <!DOCTYPE html>
@@ -34,14 +38,16 @@
     <body>
         <div class="container-fluid">
             <!-- Title -->
-            <div class="row">
-              <div class="col-lg-6">
-                  <h1>Pet Forum Dashboard</h1>
-              </div>
-                <div class="col-lg-6">
-                    <div id="rightNav">
-                        <h4>Hello, <?php echo $session; ?></h4>&nbsp;&nbsp;
-                        <h4><a href="logout.php">Logout</a></h4>
+            <div class="topNav">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <h1>Pet Forum Dashboard</h1>
+                  </div>
+                    <div class="col-lg-6">
+                        <div id="rightNav">
+                            <h4>Hello, <?php echo $session; ?></h4>&nbsp;&nbsp;
+                            <h4><a href="logout.php">Logout</a></h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,6 +58,13 @@
                     <h1 class="post-title"><?php echo $output1['title']; ?></h1>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="post-author">Posted By: <?php echo $output1['username']; ?></h5>
+                </div>
+            </div>
+
             
             <!-- Body text begins -->
             <div>
@@ -75,7 +88,7 @@
                     <?php
                         // If no replies in database, output
                         if ($query3 == 0) {
-                           echo '<td colspan="5">No Replies</td>';
+                            echo '<p colspan="5">No Replies</p>';
                         }
                     
                         while ($output2 = mysqli_fetch_assoc($query2))
@@ -98,6 +111,11 @@
                             echo '</div>';
                         }
                     ?>
+                    <form action="" method="post" id="createReply">
+                        <h5>Post a New Reply:</h5>
+                        <textarea id="content" type="text" name="content" maxlength="1000" placeholder="Enter reply here..."></textarea><br>
+                        <input id="createButton" class="btn btn-primary" value="Publish Reply" type="submit">
+                    </form>
                 </div>
             </div>
             <!-- Footer -->

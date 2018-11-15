@@ -12,8 +12,6 @@
         $result = $conn->query($getUser);
         $userString = $result->fetch_assoc();
         
-        //$output1 = mysqli_fetch_assoc($getUser);
-        //, content, userID, topicID  '$title', '$content', '$output1', '$topicNum'
         $sql = $conn->query("INSERT INTO post (title, content, username, topicID, postDate) VALUES ('$title', '$content', '$session', '$topicNum', now())");
                 
         header("location: postList.php?id=$topicNum");
