@@ -93,7 +93,6 @@
                     
                         while ($output2 = mysqli_fetch_assoc($query2))
                         {
-
                             echo '<div class="row">';
                             echo '<div class="col-9">';
                             echo '<div class="current-post">';

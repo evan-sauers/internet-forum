@@ -5,30 +5,36 @@
 
     $_SESSION['error'] = '';
     
+    $myusername = mysqli_real_escape_string($conn, $_POST['username']);
+    $userTest = $conn->query("SELECT username FROM user WHERE username='$myusername'");
+    
+    $output1 = mysqli_fetch_assoc($userTest);
+    
     // If form is submitted
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        
-        // Two passwords are equal to each other
-        if($_POST['password'] == $_POST['confirmPass']) {
-            $myusername = mysqli_real_escape_string($conn, $_POST['username']);
-            $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
-            
-            $_SESSION['username'];
-            $_SESSION['login'] = $myusername;
+    
+        //if(mysqli_num_rows($userTest) != 0) {
+            // Two passwords are equal to each other
+            if($_POST['password'] == $_POST['confirmPass']) {
+                //$myusername = mysqli_real_escape_string($conn, $_POST['username']);
+                $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
 
-            // Query username and password from user table
-            $sql = $conn->query("INSERT INTO user (username, password) VALUES('$myusername', '$mypassword')");
-            
-            if ($conn->query($sql) === false) {
-                $_SESSION['error'] = "Registration successful";
-                header("location: dashboard.php");
+                $_SESSION['username'];
+                $_SESSION['login'] = $myusername;
+
+                $sql = $conn->query("INSERT INTO user (username, password) VALUES('$myusername', '$mypassword')");
+
+                if ($conn->query($sql) === false) {
+                    $_SESSION['error'] = "Registration successful";
+                    header("location: dashboard.php");
+                } else {
+                    $_SESSION['error'] = "<span style=\"color:red;\">Registration failed</span>";
+                }
             } else {
-                $_SESSION['error'] = "<span style=\"color:red;\">Registration failed</span>";
+                $_SESSION['error'] = "<span style=\"color:red;\">The passwords did not match</span>";
             }
-        } else {
-            $_SESSION['error'] = "<span style=\"color:red;\">The passwords did not match</span>";
         }
-    }
+    //}
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +56,8 @@
                 <form action="create.php" method="post" id="login">
                     <h1>Pets Forum</h1>
                     <p>Create a username and password:</p>
-                    <div class="error"><i><?= $_SESSION['error']; ?></i></div>
-                    <input id="username" class="form" type="text" name="username" placeholder="username" required><p id="check"></p>
+                    <div id="error"><i><?= $_SESSION['error']; ?></i></div>
+                    <input id="username" class="form" type="text" name="username" placeholder="username" required>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
                     <input class="form" type="password" name="confirmPass" placeholder="confirm password" required><br>
                     <input id="createButton" class="btn btn-primary" value="Submit" type="submit">
@@ -63,7 +69,8 @@
                     <script>
                     // Use AJAX to check availability of username
                     let us = document.getElementById("username");
-                    let check = document.getElementById("check");
+                    let error = document.getElementById("error");
+                    let button = document.getElementById("createButton");
 
                     us.addEventListener("input", function(event){
 
@@ -72,8 +79,15 @@
                         xhr.onreadystatechange=function() {
                             if (this.readyState === 4 && this.status === 200) {
                                 // Display response
-                                check.innerHTML = xhr.responseText;
-                            }   
+                                error.innerHTML = xhr.responseText;
+                                
+                                if (xhr.responseText != "Username Valid") {
+                                        document.getElementById("createButton").disabled = true;  
+                                } else {
+                                        document.getElementById("createButton").disabled = false;  
+
+                                }
+                            }
                         }
                         xhr.open("GET", "username.php?us=" + us.value, true);
                         xhr.send();

@@ -3,7 +3,7 @@
     include("config.php");
     $query1 = $conn->query("SELECT * FROM topic ORDER BY topicID ASC"); 
     
-    $output1 = mysqli_fetch_assoc($query1)
+    $output1 = mysqli_fetch_assoc($query1);
 
 ?>
 
