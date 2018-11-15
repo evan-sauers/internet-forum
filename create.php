@@ -60,7 +60,8 @@
                     <input id="username" class="form" type="text" name="username" placeholder="username" required>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
                     <input class="form" type="password" name="confirmPass" placeholder="confirm password" required><br>
-                    <input id="createButton" class="btn btn-primary" value="Submit" type="submit">
+                    <input id="createButton" class="btn btn-primary" value="Submit" type="submit"><br />
+                    <a href="login.php">Back</a>
                 </form>
                 </div>
                 <footer>

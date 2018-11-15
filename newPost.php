@@ -35,7 +35,7 @@
                 <div class="topNav">
                     <div class="row">
                       <div class="col-lg-6">
-                        <h1>Pet Forum Dashboard</h1>
+                        <h1>Pets Forum</h1>
                       </div>
                         <div class="col-lg-6">
                             <div id="rightNav">
