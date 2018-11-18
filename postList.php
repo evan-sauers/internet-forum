@@ -1,25 +1,23 @@
 <?php
-    include('config.php');
-    include('session.php');
+    include("config.php");
+    include("session.php");
     
-    ob_start();
+    // Get topic ID
     $id = (int) $_GET['id'];
     if ($id < 1)
     {
         header('Location: dashboard.php');
-        exit();
     }
-    ob_end_clean();
     
+    // Get the name of topic
     $output1 = mysqli_fetch_assoc($conn->query("SELECT name FROM topic WHERE topicID = $id"));
-
     $name = $output1['name'];
 
+    // Get the list of posts
     $query2 = $conn->query("SELECT * FROM post LEFT OUTER JOIN user on post.username = user.username WHERE topicID = '$id' ORDER BY topicID DESC");
     $query3 = mysqli_num_rows($query2);
 
     $_SESSION['topicNum'] = $id;
-    
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +52,7 @@
                 <div class="col-12">
                     <h1 class="post-title"><?php echo $name ?> Forum</h1>
                     <a href="newPost.php">Add New Post</a>
+                    <a href="dashboard.php">Back</a>
                 </div>
                 <div class="none">
                     <?php if ($query3 == 0) {
@@ -62,6 +61,7 @@
                 </div>
             </div>
         </div>
+        <!-- Output post information -->
         <?php       
             while ($output2 = mysqli_fetch_assoc($query2))
             {

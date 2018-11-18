@@ -2,8 +2,12 @@
     // Create connection and begin session
     include("config.php");
     session_start();
+
+    $_SESSION['error'] = "";
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        // Retrieve values from form using POST
         $myusername = mysqli_real_escape_string($conn, $_POST['username']);
         $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
         
@@ -14,13 +18,16 @@
         $active = $row['active'];
         $count = mysqli_num_rows($sql);
         
+        // Set session variable of username
         if($count == 1) {
             $_SESSION['username'];
             $_SESSION['login'] = $myusername;
             
+            // Direct to dashboard page
             header("location: dashboard.php");
-        }else{
-            echo "<span style=\"color:red;\">Username/Password Invalid</span>";
+        } else {
+            // Error if username/password is invalid
+            $_SESSION['error'] = "<span style=\"color:red;\">Username/Password Invalid</span>";
         }
     }
 ?>
@@ -41,8 +48,9 @@
             <div class="row">
                 <div class="col-lg-12">
                 <!-- LOGIN FORMS -->
-                <form action="" method="post" id="login">
+                <form method="post" id="login">
                     <h1>Pets Forum</h1>
+                    <div id="error"><i><?= $_SESSION['error']; ?></i></div>
                     <input class="form" type="text" name="username" placeholder="username" required><br>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
                     <input id="loginButton" class="btn btn-primary" type="submit" value="Login">

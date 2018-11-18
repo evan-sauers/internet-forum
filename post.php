@@ -1,13 +1,14 @@
 <?php
-    include('config.php');
-    include('session.php');
-
+    include("config.php");
+    include("session.php");
+    
+    // Get post ID
     $id = (int) $_GET['id'];
 
     $output1 = mysqli_fetch_assoc($conn->query("SELECT * FROM post WHERE postid = $id"));
-
+    
+    // Retrieve the replies for post
     $query2 = $conn->query("SELECT * FROM reply LEFT OUTER JOIN user on reply.username = user.username WHERE postID = $id ORDER BY replyID DESC");
-
     $query3 = mysqli_num_rows($query2);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -17,12 +18,15 @@
         $result = $conn->query($getUser);
         $userString = $result->fetch_assoc();
         
+        // Insert new reply to post
         $sql = $conn->query("INSERT INTO reply (content, username, postID, replyDate) VALUES ('$mycontent', '$session', '$id', now())");
               
         header("location: post.php?id=$id");
     }
 
+    $postList = $_SESSION['topicNum'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -85,6 +89,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2>Comments</h2>
+                    <!-- Get reply information -->
                     <?php
                         // If no replies in database, output
                         if ($query3 == 0) {
@@ -110,9 +115,9 @@
                             echo '</div>';
                         }
                     ?>
-                    <form action="" method="post" id="createReply">
+                    <form method="post" id="createReply">
                         <h5>Post a New Reply:</h5>
-                        <textarea id="content" type="text" name="content" maxlength="1000" placeholder="Enter reply here..."></textarea><br>
+                        <textarea id="content" name="content" maxlength="1000" placeholder="Enter reply here..."></textarea><br>
                         <input id="createButton" class="btn btn-primary" value="Publish Reply" type="submit">
                     </form>
                 </div>
