@@ -41,3 +41,9 @@ h4 {
     padding: 10px;
     margin-bottom: 20px;
 }
+
+#corner {
+    font-size: 30px;
+    width: 350px;
+    height: 75px;
+}

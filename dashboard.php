@@ -56,7 +56,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Dogs</h5>
                             <p class="card-text">Write something about dogs...</p>
-                            <a href="postList.php?id=2" class="btn btn-primary">Access dog Subforum</a>
+                            <a href="postList.php?id=2" class="btn btn-primary">Access Dog Subforum</a>
                           </div>
                     </div>
                 </div>
@@ -119,9 +119,17 @@
 
             <!-- END ROW -->
             
-            <!-- Footer -->
             <div class="row">
                 <div class="col-lg-12">
+                    <form action="test.php" method="post" id="login">
+                        <button id="corner" class="btn btn-primary">Pets Corner</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-lg-4">
                     <p class="footer">Created by Cynthia Carter and Evan Sauers.</p>
                 </div>
             </div>

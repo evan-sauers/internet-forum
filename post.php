@@ -11,6 +11,8 @@
     $query2 = $conn->query("SELECT * FROM reply LEFT OUTER JOIN user on reply.username = user.username WHERE postID = $id ORDER BY replyID DESC");
     $query3 = mysqli_num_rows($query2);
 
+    $query4 = $conn->query("SELECT image FROM images WHERE postID = $id");
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $mycontent = mysqli_real_escape_string($conn, $_POST['content']);
         
@@ -60,6 +62,7 @@
             <div class="row">
                 <div class="col-12">
                     <h1 class="post-title"><?php echo $output1['title']; ?></h1>
+                    <a href="dashboard.php">Back</a>
                 </div>
             </div>
             
@@ -71,19 +74,17 @@
 
             
             <!-- Body text begins -->
-            <div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="col-12">
-                                    <p><?php echo $output1['content']; ?></p>
-                                </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-12">
+                                <p><?php echo $output1['content']; ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br>
             
             <!-- View Comments -->
             <div class="row">

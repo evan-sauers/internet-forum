@@ -17,6 +17,9 @@
         
         // Insert new row into post
         $sql = $conn->query("INSERT INTO post (title, content, username, topicID, postDate) VALUES ('$title', '$content', '$session', '$topicNum', now())");
+        
+        
+        
                 
         header("location: postList.php?id=$topicNum");
     }
@@ -50,25 +53,11 @@
                 </div>
             </div>
             <h1>Create a Post</h1>
-            <form method="post" id="createPost">
+            <form method="post" id="createPost" enctype="multipart/form-data">
                 <p>Title: <input class="form" type="text" name="title" placeholder="title" required></p><br>
                 <textarea id="content" name="content" maxlength="300" placeholder="Enter description here..."></textarea><br>
-            
                 <input id="createButton" class="btn btn-primary" value="Publish Post" type="submit">
             </form>
-            
-            <!-- Image Functionality-->
-            <div class="row">
-                <div class="col-12">
-                    <form>
-                        <div class="form-group">
-                            <h4>Upload an Image</h4>
-                            <p>Acceptable formats: .png and .jpg</p>
-                            <input type="file" class="form-control-file" id="upload-img">
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </body>
 </html>
