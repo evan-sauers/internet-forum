@@ -37,9 +37,10 @@
                     </div>
                 </div>
             </div>
-            <h1>Pet Corner</h1><br><br><br><br>
+            <h1>Pet Corner</h1>
+            <a href="dashboard.php">Back</a><br><br><br><br>
             <h4>Show off your own pets below!</h4><br>
-            <p>Upload an image of your pet along with a short description. Due to privacy, the Pet Corner will remain anonymous.</p><br>
+            <p>Upload an image of your pet along with a short description. Due to privacy, the Pets Corner will remain anonymous.</p><br>
             <script>
                 <?php
                     while ($row = mysqli_fetch_array($result)) {

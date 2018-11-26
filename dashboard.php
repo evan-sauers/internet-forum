@@ -121,7 +121,7 @@
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="test.php" method="post" id="login">
+                    <form action="corner.php" method="post" id="login">
                         <button id="corner" class="btn btn-primary">Pets Corner</button>
                     </form>
                 </div>

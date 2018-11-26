@@ -26,7 +26,6 @@
         header("location: post.php?id=$id");
     }
 
-    $postList = $_SESSION['topicNum'];
 ?>
 
 <!DOCTYPE html>
