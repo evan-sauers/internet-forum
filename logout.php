@@ -6,4 +6,7 @@
         // Redirect to Login Screen
         header("Location: login.php");
     }
+
+    // Close the connection
+    $conn->close();
 ?>

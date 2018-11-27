@@ -13,4 +13,7 @@
     } else {
         print "Username Valid";
     }
+
+    // Close the connection
+    $conn->close();
 ?>

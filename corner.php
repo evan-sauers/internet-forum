@@ -53,12 +53,7 @@
             </script>
             <form method="POST" action="upload.php" enctype="multipart/form-data">
             <input type="file" name="image">
-            <textarea 
-                id="text" 
-                cols="40" 
-                rows="4" 
-                name="image_text" 
-                placeholder="Describe your image."></textarea>
+            <textarea id="text" cols="40" rows="4" maxlength="300" name="image_text" placeholder="Describe your image..."></textarea>
             <button type="submit" name="submit">UPLOAD</button>
             </form>
             
@@ -74,7 +69,7 @@
                 echo '<div class="card-header">';
                 echo '<p>'.$output2['image_text'].'</p>';
                 echo '</div>';
-                echo '<img src="'.$output2['image'].'" height=auto width=auto />'; 
+                echo '<img id="uploadImg" src="'.$output2['image'].'"/>'; 
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';

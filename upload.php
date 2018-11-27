@@ -34,7 +34,7 @@
                     $sql = "INSERT INTO images (image, image_text) VALUES ('$imageDestination', '$image_text')";
                     mysqli_query($conn, $sql);
                     
-                    header("location: test.php");
+                    header("location: corner.php");
                 } else {
                     echo "Your file is too big!";
                 }

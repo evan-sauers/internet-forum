@@ -18,9 +18,6 @@
         // Insert new row into post
         $sql = $conn->query("INSERT INTO post (title, content, username, topicID, postDate) VALUES ('$title', '$content', '$session', '$topicNum', now())");
         
-        
-        
-                
         header("location: postList.php?id=$topicNum");
     }
 ?>
@@ -61,3 +58,8 @@
         </div>
     </body>
 </html>
+
+<?php
+    // Close the connection
+    $conn->close();
+?>

@@ -37,6 +37,11 @@ h4 {
     padding-top: 12px;
 }
 
+#uploadImg {
+    width: auto;
+    max-height: 500px;
+}
+
 .current-post {
     padding: 10px;
     margin-bottom: 20px;

@@ -25,7 +25,6 @@
               
         header("location: post.php?id=$id");
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -131,3 +130,8 @@
         </div>
     </body>
 </html>
+
+<?php
+    // Close the connection
+    $conn->close();
+?>

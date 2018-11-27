@@ -92,3 +92,8 @@
             </div>
     </body>
 </html>
+
+<?php
+    // Close the connection
+    $conn->close();
+?>
