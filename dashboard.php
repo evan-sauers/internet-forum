@@ -116,21 +116,17 @@
                     </div>
                 </div>
             </div>
-
             <!-- END ROW -->
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="corner.php" method="post" id="login">
-                        <button id="corner" class="btn btn-primary">Pets Corner</button>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- Footer -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <p class="footer">Created by Cynthia Carter and Evan Sauers.</p>
+                    <div class="bottom">
+                        <form action="corner.php" method="post">
+                            <div id="cornerButton">
+                                <button id="corner" class="btn btn-primary">Pets Corner</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

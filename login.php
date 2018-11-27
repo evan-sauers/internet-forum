@@ -57,16 +57,15 @@
                     <input id="createButton" class="btn btn-basic" value="Create Account" onclick="create()">
                 </form>
                 </div>
-                <script>
-                    function create(){
-                        window.location = 'create.php';
-                    }
-                </script>
-                <footer>
-                    <p>Created by Cynthia Carter and Evan Sauers.</p>
-                </footer>
-                
             </div>
+            <script>
+                function create(){
+                    window.location = 'create.php';
+                }
+            </script>
+            <footer>
+                <p>Created by Cynthia Carter and Evan Sauers.</p>
+            </footer>    
         </div>
     </body>
 </html>
