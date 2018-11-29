@@ -6,6 +6,7 @@
 
 h1 {
     float: left;
+    position: absolute;
     font-family: 'ABeeZee', sans-serif;
     font-size: 48px;
     padding: 20px;
@@ -38,8 +39,8 @@ h4 {
 }
 
 #uploadImg {
-    width: auto;
-    max-height: 500px;
+    width: 500px;
+    max-height: 100vh;
 }
 
 .current-post {
@@ -67,4 +68,24 @@ h4 {
     font-size: 30px;
     width: 350px;
     height: 75px;
+}
+
+a:link {
+    float: left;
+    position: absolute;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    float: left;
+    position: absolute;
+    font-family: 'ABeeZee', sans-serif;
+    color:dodgerblue;
+    text-decoration: none;
+}
+
+.content {
+    padding-bottom:20px;
 }
