@@ -53,7 +53,7 @@
                     }
                   ?>
             </script>
-            <form method="POST" action="upload.php" enctype="multipart/form-data">
+            <form method="POST" action="upload.php" enctype="multipart/form-data" onsubmit="return Validate(this);">
             <input type="file" name="image">
             <textarea id="text" cols="40" rows="4" maxlength="300" name="image_text" placeholder="Describe your image..."></textarea>
             <button type="submit" name="submit">UPLOAD</button>
@@ -86,5 +86,34 @@
                 </div>
             </div>
         </div>
+        <script>
+            var _validFileExtensions = [".jpg", ".jpeg", ".png"];    
+            function Validate(oForm) {
+                var arrInputs = oForm.getElementsByTagName("input");
+                for (var i = 0; i < arrInputs.length; i++) {
+                    var oInput = arrInputs[i];
+                    if (oInput.type == "file") {
+                        var sFileName = oInput.value;
+                        if (sFileName.length > 0) {
+                            var blnValid = false;
+                            for (var j = 0; j < _validFileExtensions.length; j++) {
+                                var sCurExtension = _validFileExtensions[j];
+                                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                    blnValid = true;
+                                    break;
+                                }
+                            }
+
+                            if (!blnValid) {
+                                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+        </script>
     </body>
 </html>

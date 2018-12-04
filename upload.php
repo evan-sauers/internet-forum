@@ -20,6 +20,7 @@
     
     $imageExt = explode('.',$imageName);
     $imageActualExt = strtolower(end($imageExt));
+    
     $allowed = array('jpeg', 'jpg', 'png');
     
     $image_text = mysqli_real_escape_string($conn, $_POST['image_text']);
