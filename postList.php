@@ -51,12 +51,8 @@
             <div class="row">
                 <div class="col-12">
                     <h1 class="post-title"><?php echo $name ?> Forum</h1>
-                    <div id="newPost">
-                    <a href="newPost.php">Add New Post</a>
-                    </div>
-                    <div id="dash">
-                        <a href="dashboard.php">Back</a>
-                    </div>
+                    <div class="pageButton"><a href="newPost.php">Add New Post</a></div>
+                    <div class="pageButton"><a href="dashboard.php">Back</a></div>
                 </div>
                 <div class="none">
                     <?php if ($query3 == 0) {

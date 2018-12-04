@@ -54,15 +54,10 @@
                     <input class="form" type="text" name="username" placeholder="username" required><br>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
                     <input id="loginButton" class="btn btn-primary" type="submit" value="Login">
-                    <input id="createButton" class="btn btn-basic" value="Create Account" onclick="create()">
+                    <button id="createButton" class="btn"  onclick="window.location.href='create.php'">Create Account</button>
                 </form>
                 </div>
             </div>
-            <script>
-                function create(){
-                    window.location = 'create.php';
-                }
-            </script>
             <footer>
                 <p>Created by Cynthia Carter and Evan Sauers.</p>
             </footer>    

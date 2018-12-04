@@ -1,12 +1,10 @@
 <?php
-
     include("config.php");
     include("session.php"); 
 
     // Get the images
     $query2 = $conn->query("SELECT * FROM images ORDER BY id DESC");
     $query3 = mysqli_num_rows($query2);
-
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +36,7 @@
                 </div>
             </div>
             <h1>Pet Corner</h1>
-            <div id="backlink">
-                <a href="dashboard.php">Back</a><br><br><br><br>
-            </div>
+            <div class="pageButton"><a href="dashboard.php">Back</a></div><br><br><br>
             <h4>Show off your own pets below!</h4><br>
             <p>Upload an image of your pet along with a short description. Due to privacy, the Pets Corner will remain anonymous.</p><br>
             <script>
@@ -58,6 +54,7 @@
             <textarea id="text" cols="40" rows="4" maxlength="300" name="image_text" placeholder="Describe your image..."></textarea>
             <button type="submit" name="submit">UPLOAD</button>
             </form>
+            <br>
             
             <!-- Output images of pets -->
         <?php       

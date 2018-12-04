@@ -6,7 +6,6 @@
 
 h1 {
     float: left;
-    position: absolute;
     font-family: 'ABeeZee', sans-serif;
     font-size: 48px;
     padding: 20px;
@@ -25,6 +24,10 @@ h4 {
     background-color: #f0f0f0;
 }
 
+.pageButton {
+    padding: 10px;
+}
+
 #createPost {
     margin-top: 100px;
 }
@@ -39,8 +42,8 @@ h4 {
 }
 
 #uploadImg {
-    width: 500px;
-    max-height: 100vh;
+    width: auto;
+    max-height: 500px;
 }
 
 .current-post {
@@ -60,7 +63,6 @@ h4 {
 
 #cornerButton {
     text-align: center;
-    margin 0;
 }
 
 #corner {
@@ -68,24 +70,4 @@ h4 {
     font-size: 30px;
     width: 350px;
     height: 75px;
-}
-
-a:link {
-    float: left;
-    position: absolute;
-    font-family: 'ABeeZee', sans-serif;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-a:hover {
-    float: left;
-    position: absolute;
-    font-family: 'ABeeZee', sans-serif;
-    color:dodgerblue;
-    text-decoration: none;
-}
-
-.content {
-    padding-bottom:20px;
 }
