@@ -20,9 +20,13 @@
         $result = $conn->query($getUser);
         $userString = $result->fetch_assoc();
         
-        // Insert new reply to post
-        $sql = $conn->query("INSERT INTO reply (content, username, postID, replyDate) VALUES ('$mycontent', '$session', '$id', now())");
-              
+        if ($mycontent != null) {
+            // Insert new reply to post
+            $sql = $conn->query("INSERT INTO reply (content, username, postID, replyDate) VALUES ('$mycontent', '$session', '$id', now())");
+            $_SESSION['error'] = "";
+        } else {
+            $_SESSION['error'] = "<span style=\"color:red;\">Reply Empty</span>";
+        }
         header("location: post.php?id=$id");
     }
 ?>
@@ -116,8 +120,9 @@
                     ?>
                     <form method="post" id="createReply">
                         <h5>Post a New Reply:</h5>
-                        <textarea id="content" name="content" maxlength="1000" placeholder="Enter reply here..."></textarea><br>
+                        <textarea id="content" name="content" maxlength="1000" placeholder="Enter reply here..." required></textarea><br>
                         <input id="createButton" class="btn btn-primary" value="Publish Reply" type="submit">
+                        <div id="error"><i><?= $_SESSION['error']; ?></i></div>
                     </form>
                 </div>
             </div>

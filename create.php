@@ -7,7 +7,7 @@
     
     // If form is submitted
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        // Two passwords are equal to each other
+        // Server-side validation on passwords
         if($_POST['password'] == $_POST['confirmPass']) {
             $myusername = mysqli_real_escape_string($conn, $_POST['username']);
             $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
@@ -20,14 +20,19 @@
             $_SESSION['username'];
             $_SESSION['login'] = $myusername;
             
-            // Insert new row
-            $sql = $conn->query("INSERT INTO user (username, password) VALUES('$myusername', '$mypassword')");
-
-            // On submit, redirect to dashboard
-            if ($conn->query($sql) === false) {
-                header("location: dashboard.php");
+            // Server-side validation on username
+            if (empty($myusername)) {   
+                $_SESSION['error'] = "<span style=\"color:red;\">Username cannot not be empty</span>";
             } else {
-                $_SESSION['error'] = "<span style=\"color:red;\">Registration failed</span>";
+                // Insert new row
+                $sql = $conn->query("INSERT INTO user (username, password) VALUES('$myusername', '$mypassword')");
+                
+                // On submit, redirect to dashboard
+                if ($conn->query($sql) === false) {
+                    header("location: dashboard.php");
+                } else {
+                    $_SESSION['error'] = "<span style=\"color:red;\">Registration failed</span>";
+                }
             }
         } else {
             // Error if passwords are different
@@ -58,7 +63,7 @@
                     <div id="error"><i><?= $_SESSION['error']; ?></i></div>
                     <input id="username" class="form" type="text" name="username" placeholder="username" required>
                     <input class="form" type="password" name="password" placeholder="password" required><br>
-                    <input class="form" type="password" name="confirmPass" placeholder="confirm password" required><br>
+                    <input id="confirmPass" class="form" type="password" name="confirmPass" placeholder="confirm password" required><br>
                     <input id="createButton" class="btn btn-primary" value="Submit" type="submit"><br />
                     <a href="login.php">Back</a>
                 </form>
@@ -71,6 +76,26 @@
                 let us = document.getElementById("username");
                 let error = document.getElementById("error");
                 let button = document.getElementById("createButton");
+
+                // Event when typing in forms
+                us.addEventListener("input", function(event){
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange=function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            // Display response
+                            error.innerHTML = xhr.responseText;
+                            
+                            // Disable submit button based on validation
+                            if (xhr.responseText != "Username Valid") {
+                                    document.getElementById("createButton").disabled = true;  
+                            } else {
+                                    document.getElementById("createButton").disabled = false;
+                            }
+                        }
+                    }
+                    xhr.open("GET", "username.php?us=" + us.value, true);
+                    xhr.send();
+                });
 
                 // Event when typing in forms
                 us.addEventListener("input", function(event){
